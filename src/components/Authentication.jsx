@@ -27,42 +27,44 @@ export default function Authentication() {
   };
 
   return (
-    <div className="container">
-      <div className="card card-body mt-5">
-        <form onSubmit={requestOTP}>
-          <h2>Sign in with phone number</h2>
-          <div className="mb-3">
-            <label htmlFor="phoneNumberInput" className="form-label">
-              Phone number
-            </label>
-            <input
-              type="tel"
-              className="form-control"
-              id="phoneNumberInput"
-              aria-describedby="emailHelp"
-            />
-            <div id="phoneNumberHelp" className="form-text">
-              Please enter your phone number
-            </div>
-          </div>
-          {expandForm === true ? (
-            <>
-              <div className="mb-3">
-                <label htmlFor="otpInput" className="form-label">
-                  OTP
-                </label>
-                <input type="number" className="form-control" id="otpInput" />
-                <div id="otpHelp" className="form-text">
-                  Please enter the one time pin sent to your phone number
-                </div>
+    <div className="container col-4">
+      <div className="card mt-5">
+        <div className="card-body">
+          <form onSubmit={requestOTP}>
+            <h3>Sign in</h3>
+            <div className="mb-3">
+              <label htmlFor="phoneNumberInput" className="form-label">
+                Phone number
+              </label>
+              <input
+                type="tel"
+                className="form-control"
+                id="phoneNumberInput"
+                aria-describedby="emailHelp"
+              />
+              <div id="phoneNumberHelp" className="form-text">
+                Please enter your phone number
               </div>
-            </>
-          ) : null}
-          {expandForm === false ? (
-            <button className="btn btn-primary">Request OTP</button>
-          ) : null}
-          <div id="recaptcha-container"></div>
-        </form>
+            </div>
+            {expandForm === true ? (
+              <>
+                <div className="mb-3">
+                  <label htmlFor="otpInput" className="form-label">
+                    OTP
+                  </label>
+                  <input type="number" className="form-control" id="otpInput" />
+                  <div id="otpHelp" className="form-text">
+                    Please enter the one time pin sent to your phone number
+                  </div>
+                </div>
+              </>
+            ) : null}
+            {expandForm === false ? (
+              <button className="btn btn-primary">Request OTP</button>
+            ) : null}
+            <div id="recaptcha-container"></div>
+          </form>
+        </div>
       </div>
     </div>
   );
