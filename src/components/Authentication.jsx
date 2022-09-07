@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Auth from "../firebase-config";
-import { RecaptchaVerifier } from "firebase/auth";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Authentication() {
@@ -9,20 +9,30 @@ export default function Authentication() {
   const [phoneNumber, setPhoneNumber] = useState(countryCode);
   const [expandForm, setExpandForm] = useState(false);
 
-  const requestOTP = (e) => {
-    e.preventDefault();
-    if (phoneNumber.length >= 10) {
-      setExpandForm(true);
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        "sign-in-button",
+  const generateReCaptcha = () => {
+    window.recaptchaVerifier = new RecaptchaVerifier(
+        "recaptcha-container",
         {
           size: "invisible",
           callback: (response) => {
-            // reCAPTCHA solved, allow signInWithPhoneNumber.
           },
         },
         Auth
       );
+  }
+
+  const requestOTP = (e) => {
+    e.preventDefault();
+    if (phoneNumber.length >= 10) {
+      setExpandForm(true);
+      generateReCaptcha();
+      let appViewer = window.recaptchaVerifier;
+      signInWithPhoneNumber(Auth, phoneNumber, appViewer)
+      .then((confirmationResult) => {
+        window.confirmationResult = confirmationResult;
+      }).catch((error) => {
+        console.log(error);
+      });
     }
   };
 
