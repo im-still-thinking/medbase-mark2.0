@@ -4,7 +4,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Authentication() {
-  const countryCode = "+91";
+  const countryCode = "+91 ";
 
   const [phoneNumber, setPhoneNumber] = useState(countryCode);
   const [expandForm, setExpandForm] = useState(false);
