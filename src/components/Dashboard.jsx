@@ -23,6 +23,7 @@ export default function Dashboard() {
             <h4 className="my-3">Phone: +91 9876543210</h4>
           </div>
         </div>
+        
         <div
           className="tableBox"
           style={{
