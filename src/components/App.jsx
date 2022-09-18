@@ -8,10 +8,10 @@ import Landing from './Landing';
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/auth" element={<Authentication />} />
-      <Route path="/signup" element={<SignUp/>} />
-      <Route path="/dashboard" element={<Dashboard />}/>
+      <Route exact path="/" element={<Landing />} />
+      <Route exact path="/auth" element={<Authentication />} />
+      <Route exact path="/signup" element={<SignUp/>} />
+      <Route exact path="/dashboard" element={<Dashboard />}/>
     </Routes>
   );
 }
