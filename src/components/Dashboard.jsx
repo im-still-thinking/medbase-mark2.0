@@ -113,7 +113,7 @@ export default function Dashboard() {
                   <h6 className="text-center fw-bold">Upload Documents</h6>
                   <div className="d-flex bd-highlight mx-4">
                     <div className="App">
-                      <input onChange={(e) => deploy(e)} type="file" />
+                      <input onChange={(e) => deploy(e)} type="file" id="myfile" name="myfile"/>
                     </div>
                   </div>
                   <h6 className="text-center">. . .</h6>
