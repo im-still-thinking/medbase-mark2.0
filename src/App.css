@@ -1,8 +1,5 @@
 body {
-  /* background-color: rgb(209, 227, 231); */
   background: rgb(140, 182, 209);
-  /* background-repeat: none; */
-  /* background: linear-gradient(3deg, rgba(83,155,201,1) 0%, rgba(149,198,205,1) 50%, rgba(193,244,255,1) 100%); */
 }
 
 .App {
@@ -74,16 +71,7 @@ label {
   margin-right: 1em;
 }
 
-.ridge {
-  /* background: rgb(217, 217, 217); */
-  background: rgb(33, 71, 91);
-  background: linear-gradient(24deg, rgb(102, 172, 208) 0%, rgb(137, 176, 202), 24%, rgb(151, 214, 228) 55%, rgb(104, 172, 187) 99%);
-  border-width: 10px;
-  border-style: ridge;
-  Border-color: white;
-}
-
-.card {
+.card{
   /* line-height: 25px; */
   /* float: left; */
   /* margin-right: 1em; */
@@ -97,7 +85,6 @@ label {
   backdrop-filter: blur(8px);
   margin: 60px 0;
   text-align: left;
-  /* box-shadow: 1.5px 2px 4px rgb(48 48 48); */
 }
 
 .top {
@@ -107,11 +94,6 @@ label {
   height: 100px;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.249);
-  /* backdrop-filter: blur(2px); */
-  /* position: relative; */
-  /* left: 0; */
-  /* top: -31px; */
-  /* display: flex; */
 }
 
 .name {
@@ -145,22 +127,6 @@ label {
   margin: 20px 0;
   color: rgba(255, 255, 255, 0.821);
   font-weight: normal;
-}
-
-.dash-card.grey {
-  background: linear-gradient(135deg, #6aa1a9 0%, #485260 100%);
-}
-
-.dash-card.metallic {
-  background: linear-gradient(135deg, #a2b6df 0%, #33569b 100%);
-}
-
-.dash-card.purple {
-  background: linear-gradient(135deg, #dfaffd 0%, #4e6ffb 100%);
-}
-
-.dash-card.green {
-  background: linear-gradient(150deg, #39ef74, #101bbe 100%);
 }
 
 /*DASHBOARD BG FIX*/
