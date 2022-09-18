@@ -1,11 +1,58 @@
-import React from "react";
-import Data from "../data.json";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-// import User from "../user.png";
-import NavBar from "./MedNav.jsx"
+import lighthouse from "@lighthouse-web3/sdk";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useState } from "react";
+import auth, { db } from "../firebase-config";
+import NavBar from "./MedNav.jsx";
 
 export default function Dashboard() {
+  const [userName, setuserName] = useState("");
+  const [userCID, setuserCID] = useState([]);
+  const [userPhoneNumber, setuserPhoneNumber] = useState("");
+  const [userUID, setuserUID] = useState("");
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      checkDatabase(
+        "+91 ".concat(user.phoneNumber.substring(3)),
+        user.uid.substring(13).toUpperCase()
+      );
+    } else {
+      console.log("User not signed in");
+    }
+  });
+
+  async function checkDatabase(ph, uid) {
+    // console.log(ph);
+    // console.log(uid);
+    const docRef = doc(db, "users", ph);
+    const docSnap = await getDoc(docRef);
+
+    setuserPhoneNumber(ph);
+    setuserUID(uid);
+    setuserName(docSnap.get("name"));
+    setuserCID(docSnap.get("cid"));
+    // console.log(userCID);
+  }
+
+  const deploy = async (e) => {
+    // Get a bearer token
+    // Push file to lighthouse node
+    const output = await lighthouse.deploy(e, `f3e100fa-1b53-4a54-8872-effed3ef543c`);
+    console.log("File Status:", output);
+    /*
+      output:
+        {
+          Name: "filename.txt",
+          Size: 88000,
+          Hash: "QmWNmn2gr4ZihNPqaC5oTeePsHvFtkWNpjY3cD6Fd5am1w"
+        }
+      Note: Hash in response is CID.
+    */
+    console.log("Visit at https://ipfs.io/ipfs/" + output.Hash);
+    
+  };
+
   return (
     <section>
       {<NavBar />}
@@ -15,26 +62,21 @@ export default function Dashboard() {
         </h1>
         <div className="row justify-content-center align-items-center position-float">
           <div className="card">
-            {/* <div className="d-flex flex-col justify-content-between">
-              <h1>Test User</h1>
-              <img src={User} className="user rounded flex" alt="user" />
-            </div>
-            <h4 className="my-4">UID: XXXX-XXXX-XXXX</h4>
-            <h4 className="my-3">Phone: +91 9876543210</h4> */}
             <div className="top">
-              <h2 className="name">Risavdeb Poddar</h2>
-              <img className="circle-img"
+              <h2 className="name">{userName}</h2>
+              <img
+                className="circle-img"
                 src="https://cdn-icons-png.flaticon.com/512/219/219986.png"
                 alt="avatar_img"
               />
             </div>
             <div className="bottom">
-              <p className="info">XXXX XXXX XXXX</p>
-              <p className="info">+91 8961675822</p>
+              <p className="info">{userUID}</p>
+              <p className="info">{userPhoneNumber}</p>
             </div>
           </div>
         </div>
-        
+
         <div
           className="tableBox"
           style={{
@@ -51,10 +93,9 @@ export default function Dashboard() {
                 <th colSpan="4">
                   <h6 className="text-center fw-bold">Upload Documents</h6>
                   <div className="d-flex bd-highlight mx-4">
-                    <Form.Group controlId="formFile" className="flex-grow-1">
-                      <Form.Control type="file" />
-                    </Form.Group>
-                    <Button variant="primary" className="upload_button">Upload</Button>{" "}
+                    <div className="App">
+                      <input onChange={(e) => deploy(e)} type="file" />
+                    </div>
                   </div>
                   <h6 className="text-center">. . .</h6>
                 </th>
@@ -75,7 +116,7 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {Data.map((data) => {
+              {userCID.map((data) => {
                 return (
                   <tr>
                     <th scope="row" style={{ textAlign: "center" }}>
@@ -89,7 +130,11 @@ export default function Dashboard() {
                       {data.date}
                     </td>
                     <td style={{ textAlign: "right" }}>
-                      <a rel="noreferrer" target="_blank" href={data.url}>
+                      <a
+                        rel="noreferrer"
+                        target="_blank"
+                        href={"https://dweb.link/ipfs/" + data.hash}
+                      >
                         <button
                           type="button"
                           className="btn btn-sm btn-primary justify-content-right"
@@ -98,7 +143,15 @@ export default function Dashboard() {
                         </button>
                       </a>
                       <a
-                        href={data.url + "?filename=filename.png&download=true"}
+                        href={
+                          "https://dweb.link/ipfs/" +
+                          data.hash +
+                          "?filename=" +
+                          data.title +
+                          "." +
+                          data.type +
+                          "filename.png&download=true"
+                        }
                       >
                         <button
                           type="button"
