@@ -57,8 +57,8 @@ export default function Dashboard() {
     console.log(output.data.Hash);
     await updateDoc(doc(db, "users", userPhoneNumber), {
       cid: arrayUnion({
-        id: userCID[userCID.length - 1].id + 1,
-        title: fileName + String(userCID[userCID.length - 1].id + 1),
+        id: userCID.length + 1,
+        title: fileName + String(userCID.length + 1),
         date: today,
         type: fileType,
         hash: output.data.Hash,
