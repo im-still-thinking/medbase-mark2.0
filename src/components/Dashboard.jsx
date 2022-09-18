@@ -80,7 +80,7 @@ export default function Dashboard() {
           Dashboard
         </h1>
         <div className="row justify-content-center align-items-center position-float">
-          <div className="card">
+          <div className="card_dash">
             <div className="top">
               <h2 className="name">{userName}</h2>
               <img

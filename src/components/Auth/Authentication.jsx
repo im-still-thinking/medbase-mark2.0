@@ -5,6 +5,9 @@ import { doc, getDoc } from "firebase/firestore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
+import "../../styles/login.css";
+import logo from "../../imgs/logo.png";
+
 export default function Authentication() {
   const countryCode = "+91 ";
   const navigate = useNavigate();
@@ -82,10 +85,12 @@ export default function Authentication() {
   };
 
   return (
-    <div className="body_signup">
+    <div className="body_login">
+      <div></div>
       <div className="container col-4">
-        <div className="card mt-5">
-          <div className="card-body">
+        <div className="card mt-5 h-100 flex flex-col justify-content-center align-items-center rounded-4">
+          <img src={logo} className="logo_medbase_login" alt="MedBase Logo" />
+          <div className="card-body my-3">
             <form onSubmit={requestOTP}>
               <h3>Welcome to Medbase</h3>
               <div className="mb-3">
