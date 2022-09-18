@@ -1,6 +1,6 @@
 import lighthouse from "@lighthouse-web3/sdk";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import auth, { db } from "../firebase-config";
 import NavBar from "./MedNav.jsx";
@@ -10,6 +10,13 @@ export default function Dashboard() {
   const [userCID, setuserCID] = useState([]);
   const [userPhoneNumber, setuserPhoneNumber] = useState("");
   const [userUID, setuserUID] = useState("");
+
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + "/" + dd + "/" + yyyy;
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -23,8 +30,6 @@ export default function Dashboard() {
   });
 
   async function checkDatabase(ph, uid) {
-    // console.log(ph);
-    // console.log(uid);
     const docRef = doc(db, "users", ph);
     const docSnap = await getDoc(docRef);
 
@@ -38,20 +43,34 @@ export default function Dashboard() {
   const deploy = async (e) => {
     // Get a bearer token
     // Push file to lighthouse node
+    console.log(e.target.value.substring(12, e.target.value.length - 4));
+    const fileName = e.target.value.substring(12, e.target.value.length - 4);
+    const fileType = e.target.value.substring(e.target.value.length - 4, e.target.value.length);
+
     const output = await lighthouse.deploy(e, `f3e100fa-1b53-4a54-8872-effed3ef543c`);
-    console.log("File Status:", output);
-    /*
-      output:
-        {
-          Name: "filename.txt",
-          Size: 88000,
-          Hash: "QmWNmn2gr4ZihNPqaC5oTeePsHvFtkWNpjY3cD6Fd5am1w"
-        }
-      Note: Hash in response is CID.
-    */
-    console.log("Visit at https://ipfs.io/ipfs/" + output.Hash);
-    
+    writeToDoc(output, fileName, fileType);
+      
   };
+
+  async function writeToDoc(output, fileName, fileType) {
+    console.log(typeof(output));
+    console.log(output.data.Hash);
+    await updateDoc(doc(db, "users", userPhoneNumber), {
+      cid: arrayUnion({
+        id: userCID[userCID.length - 1].id + 1,
+        title: fileName + String(userCID[userCID.length - 1].id + 1),
+        date: today,
+        type: fileType,
+        hash: output.data.Hash,
+      }),
+    })
+
+    console.log("Title" + String(userCID[userCID.length - 1].id + 1));
+    console.log(userPhoneNumber);
+    console.log(today);
+
+    console.log("File Status:", output);
+  }
 
   return (
     <section>
@@ -133,7 +152,7 @@ export default function Dashboard() {
                       <a
                         rel="noreferrer"
                         target="_blank"
-                        href={"https://dweb.link/ipfs/" + data.hash}
+                        href={"https://gateway.lighthouse.storage/ipfs/" + data.hash}
                       >
                         <button
                           type="button"
@@ -144,13 +163,13 @@ export default function Dashboard() {
                       </a>
                       <a
                         href={
-                          "https://dweb.link/ipfs/" +
+                          "https://gateway.lighthouse.storage/ipfs/" +
                           data.hash +
                           "?filename=" +
                           data.title +
                           "." +
                           data.type +
-                          "filename.png&download=true"
+                          "&download=true"
                         }
                       >
                         <button
