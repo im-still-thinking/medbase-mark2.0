@@ -10,7 +10,7 @@ import logo from '../../src/imgs/logo.png';
 import { Link } from 'react-router-dom';
 // if (window?.location.pathname === '/')
 //     require('../styless.css')
-import "../styless.css";
+import "../styles/styless.css";
 
 
 

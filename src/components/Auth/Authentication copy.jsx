@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Auth, { db } from "../../firebase-config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc} from "firebase/firestore";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export default function Authentication() {
   const countryCode = "+91 ";
-  const navigate = useNavigate();
+  const navigate  = useNavigate();
 
   const [phoneNumber, setPhoneNumber] = useState(countryCode);
   const [expandForm, setExpandForm] = useState(false);
@@ -18,7 +18,7 @@ export default function Authentication() {
       "recaptcha-container",
       {
         size: "invisible",
-        callback: (response) => { },
+        callback: (response) => {},
       },
       Auth
     );
@@ -52,8 +52,8 @@ export default function Authentication() {
             });
         } else {
           console.log("No such document!");
-          navigate('/signup', {
-            state: { phoneNumber: phoneNumber },
+          navigate('/signup',{
+            state: {phoneNumber: phoneNumber},
           });
         }
       }
@@ -77,63 +77,61 @@ export default function Authentication() {
           console.log(user);
           navigate('/dashboard');
         })
-        .catch((error) => { });
+        .catch((error) => {});
     }
   };
 
   return (
-    <div className="body_signup">
-      <div className="container col-4">
-        <div className="card mt-5">
-          <div className="card-body">
-            <form onSubmit={requestOTP}>
-              <h3>Welcome to Medbase</h3>
-              <div className="mb-3">
-                <label htmlFor="phoneNumberInput" className="form-label">
-                  Phone number
-                </label>
-                <input
-                  onChange={handlePhoneNumber}
-                  type="tel"
-                  className="form-control"
-                  id="phoneNumberInput"
-                  aria-describedby="emailHelp"
-                  value={phoneNumber}
-                />
-                <div id="phoneNumberHelp" className="form-text">
-                  Please enter your phone number
-                </div>
+    <div className="container col-4">
+      <div className="card mt-5">
+        <div className="card-body">
+          <form onSubmit={requestOTP}>
+            <h3>Welcome to Medbase</h3>
+            <div className="mb-3">
+              <label htmlFor="phoneNumberInput" className="form-label">
+                Phone number
+              </label>
+              <input
+                onChange={handlePhoneNumber}
+                type="tel"
+                className="form-control"
+                id="phoneNumberInput"
+                aria-describedby="emailHelp"
+                value={phoneNumber}
+              />
+              <div id="phoneNumberHelp" className="form-text">
+                Please enter your phone number
               </div>
+            </div>
 
-              {expandForm === true ? (
-                <>
-                  <div className="mb-3">
-                    <label htmlFor="otpInput" className="form-label">
-                      OTP
-                    </label>
-                    <input
-                      type="number"
-                      className="form-control"
-                      id="otpInput"
-                      val={OTP}
-                      onChange={verifyOTP}
-                    />
-                    <div id="otpHelp" className="form-text">
-                      Please enter the one time pin sent to your phone number
-                    </div>
+            {expandForm === true ? (
+              <>
+                <div className="mb-3">
+                  <label htmlFor="otpInput" className="form-label">
+                    OTP
+                  </label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="otpInput"
+                    val={OTP}
+                    onChange={verifyOTP}
+                  />
+                  <div id="otpHelp" className="form-text">
+                    Please enter the one time pin sent to your phone number
                   </div>
-                </>
-              ) : null}
+                </div>
+              </>
+            ) : null}
 
-              {expandForm === false ? (
-                <button type="submit" className="btn btn-primary">
-                  Continue
-                </button>
-              ) : null}
+            {expandForm === false ? (
+              <button type="submit" className="btn btn-primary">
+                Continue
+              </button>
+            ) : null}
 
-              <div id="recaptcha-container"></div>
-            </form>
-          </div>
+            <div id="recaptcha-container"></div>
+          </form>
         </div>
       </div>
     </div>

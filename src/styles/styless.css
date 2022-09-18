@@ -19,13 +19,6 @@
     margin-bottom: 30px;
 }
 
-/* body{
-    background-image: url("bg2.png");
-    background-color: #20696f;
-    background-repeat: none;
-    height: auto;
-} */
-
 .card_land{
     width: 1000px;
     height: 400px;
@@ -243,7 +236,7 @@ b{color: #ffec70;}
     float: left;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
 
-    background-image: url("../src/imgs/card_bg.png");
+    background-image: url("../imgs/card_bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #fff;
@@ -292,7 +285,7 @@ b{color: #ffec70;}
     float: right;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
 
-    background-image: url("../src/imgs/card_bg.png");
+    background-image: url("../imgs/card_bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #fff;
@@ -341,7 +334,7 @@ b{color: #ffec70;}
     margin-top: 20px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
 
-    background-image: url("../src/imgs/card_bg.png");
+    background-image: url("../imgs/card_bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #fff;
@@ -392,7 +385,7 @@ b{color: #ffec70;}
     margin-top: 20px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
 
-    background-image: url("../src/imgs/card_bg.png");
+    background-image: url("../imgs/card_bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #fff;
