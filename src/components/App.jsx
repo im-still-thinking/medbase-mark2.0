@@ -1,10 +1,17 @@
 import React from 'react'
-import Authentication from './Authentication'
+import { Route, Routes } from 'react-router-dom'
+import SignUp from './Auth/Signup';
+import Authentication from './Auth/Authentication'
+import Dashboard from './Dashboard';
+import Landing from './Landing';
 
 export default function App() {
   return (
-    <div>
-      <Authentication/>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/auth" element={<Authentication />} />
+      <Route path="/signup" element={<SignUp/>} />
+      <Route path="/dashboard" element={<Dashboard />}/>
+    </Routes>
+  );
 }
