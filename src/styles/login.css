@@ -1,3 +1,14 @@
 .logo_medbase_login{
     width: 90%;
 }
+
+.logo_medbase_signup{
+    width: 90%;
+}
+
+.card_signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

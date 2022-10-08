@@ -7,10 +7,13 @@ import one from '../../src/imgs/1.png';
 import three from '../../src/imgs/3.png';
 import thirteen from '../../src/imgs/13.png';
 import logo from '../../src/imgs/logo.png';
+import logo2 from '../../src/imgs/MedBase.png';
 import { Link } from 'react-router-dom';
 // if (window?.location.pathname === '/')
 //     require('../styless.css')
 import "../styles/styless.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 
 
@@ -28,8 +31,9 @@ export default function Landing() {
         <div className="shape6"></div>
         <div className="land_bg">
             <div className="card_land">
+                <img src={logo2} alt="logo" className='logo_medbase_land'/>
                 <h1 className='h1'><span className="span">Med</span>Base</h1>
-                <h3 className='h3'>Medical records <b className="any">ANYTIME</b>, <b className="any1">ANYWHERE!</b></h3>
+                <h3 className='h3'>Medical records <b className="any">ANYTIME</b> <b className="any1">ANYWHERE!</b></h3>
                 <Link to="/auth"><button className="button">Join Us</button></Link>
             </div>
         </div>

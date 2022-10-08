@@ -140,3 +140,14 @@ section {
 .tableBox {
   margin-top: -80px;
 }
+
+@media only screen and (max-width: 600px) {
+  .logo_medbase_login{
+    width: 90%;
+  }
+}
+
+.padding-fix{
+  padding-top: 20px;
+  padding-bottom: 120px;
+}

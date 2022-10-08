@@ -4,6 +4,7 @@ import { doc, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import auth, { db } from "../../firebase-config";
 import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../../imgs/logo.png";
 
 
 export default function SignUp() {
@@ -71,13 +72,16 @@ export default function SignUp() {
   };
 
   return (
-    <div className="Auth-form-container">
+    <div className="Auth-form-container container">
       <form
         className="Auth-form shadow-lg p-3 my-5 bg-white rounded"
         onSubmit={getOtp}
       >
-        <div className="Auth-form-content">
+        <div className="Auth-form-content card_signup">
+        <img src={logo} className="logo_medbase_signup" alt="MedBase Logo" />
           <h3 className="Auth-form-title">Sign Up</h3>
+          <div className="forms">
+
           <div className="form-group mt-3">
             <label>Full Name</label>
             <input
@@ -96,7 +100,7 @@ export default function SignUp() {
             />
           </div>
 
-          <div className="form-group mt-3">
+          <div className="form-group mt-3 px-3">
             <label htmlFor="exampleFormControlSelect1">Gender</label>
             <select className="form-control" id="exampleFormControlSelect1">
               <option>Male</option>
@@ -105,10 +109,12 @@ export default function SignUp() {
               <option>Prefer Not to Say</option>
             </select>
           </div>
+          </div>
+          
 
           {expandForm === true ? (
             <>
-              <div className="mb-3">
+              <div className="mb-3 mt-3">
                 <label htmlFor="otpInput" className="form-label">
                   OTP
                 </label>

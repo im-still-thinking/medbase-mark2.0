@@ -87,12 +87,12 @@ export default function Authentication() {
   return (
     <div className="body_login">
       <div></div>
-      <div className="container col-4">
+      <div className="container col-lg-4 padding-fix">
         <div className="card mt-5 h-100 flex flex-col justify-content-center align-items-center rounded-4">
           <img src={logo} className="logo_medbase_login" alt="MedBase Logo" />
           <div className="card-body my-3">
             <form onSubmit={requestOTP}>
-              <h3>Welcome to Medbase</h3>
+              <h3 className="text-center">Welcome to Medbase</h3>
               <div className="mb-3">
                 <label htmlFor="phoneNumberInput" className="form-label">
                   Phone number
