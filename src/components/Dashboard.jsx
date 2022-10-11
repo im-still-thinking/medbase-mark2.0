@@ -76,7 +76,7 @@ export default function Dashboard() {
     <section>
       {<NavBar />}
       <div className="container">
-        <h1 className="heading_dashboard fw-bold mb-4 text-center">
+        <h1 className="heading_dashboard fw-bold mt-5 text-center">
           Dashboard
         </h1>
         <div className="row justify-content-center align-items-center position-float">

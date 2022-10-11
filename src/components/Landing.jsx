@@ -17,7 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Landing() {
   return (
     <div className="body">
-      <div className="navbar">
+      <div className="navbar2">
         <center>
           <img src={logo} alt="logo" className="navbarp" />
         </center>
@@ -48,6 +48,25 @@ export default function Landing() {
         <h2 className="h2">
           <center>About Us</center>
         </h2>
+        <div className="about_us_phone">
+          <p className="para_phone">
+            MedBase is an online platform to maintain medical records of a
+            patient. It runs on the IPFS - InterPlanetary File System protocol
+            making it accessible even from a different planet! It's website form
+            allows all users to use our services irrespective of the device they
+            are using.
+            <br/>
+            <br/>
+            Every registered user gets a unique 12 digit generated ID which can
+            be used for accessing all the medical records of the person from
+            birth till date from anywhere across the globe.
+            <br/>
+            <br/>
+            Once uploaded the document cannot be removed: This ensures that a
+            document cannot be duplicated but demands utmost caution of the
+            uploader before uploading any document.
+          </p>
+        </div>
         <div className="about_us div1">
           <p className="p fp">
             MedBase is an online platform to maintain medical records of a

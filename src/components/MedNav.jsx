@@ -7,14 +7,14 @@ export default function MedNav() {
     <Navbar bg="light" fixed="top" expand="lg" variant="light">
       <Container fluid>
         <Navbar.Brand href="/">MedBase</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse className="justify-content-end">
+        
+        
           <Link to="/auth">
             <button className="btn btn-outline-success my-2 my-sm-0">
               Log Out
             </button>
           </Link>
-        </Navbar.Collapse>
+        
       </Container>
     </Navbar>
   );
