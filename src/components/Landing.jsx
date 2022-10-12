@@ -98,8 +98,8 @@ export default function Landing() {
         
       </div>
       <div className="teams">
-        <h2 className="h2">
-          <center>Our Team</center>
+        <h2 className="h2 center">
+          Our Team
         </h2>
         <br />
         <br />
@@ -126,6 +126,39 @@ export default function Landing() {
           <h5 className="h5">Frontend Developer</h5>
         </div>
         <div className="sayak">
+          <div className="border">
+            <img src={sayak} alt="Sayak" />
+          </div>
+          <h4>Sayak Sarkar</h4>
+          <h5 className="h5">Frontend Developer</h5>
+        </div>
+      </div>
+      <div className="teams_phone">
+        <h2 className="H2center">
+          Our Team
+        </h2>
+        <div className="card_about">
+            <div className="border">
+              <img src={raihan} alt="" />
+            </div>
+            <h4>Raihan Khan</h4>
+            <h5 className="h5">Backend Developer</h5>
+        </div>
+        <div className="card_about">
+          <div className="border">
+            <img src={aritra} alt="" />
+          </div>
+          <h4>Aritra Roy</h4>
+          <h5 className="h5">Backend Developer</h5>
+        </div>
+        <div className="card_about">
+          <div className="border">
+            <img src={risav} alt="Risav" />
+          </div>
+          <h4>Risavdeb Patra</h4>
+          <h5 className="h5">Frontend Developer</h5>
+        </div>
+        <div className="card_about">
           <div className="border">
             <img src={sayak} alt="Sayak" />
           </div>
