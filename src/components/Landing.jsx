@@ -99,7 +99,7 @@ export default function Landing() {
       </div>
       <div className="teams">
         <h2 className="h2 center">
-          Our Team
+          <center>Our Team</center>
         </h2>
         <br />
         <br />
