@@ -4,6 +4,7 @@ import SignUp from './Auth/Signup';
 import Authentication from './Auth/Authentication'
 import Dashboard from './Dashboard';
 import Landing from './Landing';
+import Error from './Error'
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Route exact path="/auth" element={<Authentication />} />
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/dashboard" element={<Dashboard />}/>
+      <Route exact path="/error" element={<Error />}/>
     </Routes>
   );
 }

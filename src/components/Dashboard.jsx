@@ -185,7 +185,9 @@ export default function Dashboard() {
               })}
             </tbody>
           </table>
-        </div>
+          <div className="tableBox_b">
+          </div>
+        </div> 
       </div>
     </section>
   );

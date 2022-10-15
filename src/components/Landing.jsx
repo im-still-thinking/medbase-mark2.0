@@ -6,8 +6,8 @@ import aritra from "../../src/imgs/aritra.png";
 import one from "../../src/imgs/1.png";
 import three from "../../src/imgs/3.png";
 import thirteen from "../../src/imgs/13.png";
-import logo from "../../src/imgs/logo.png";
 import logo2 from "../../src/imgs/MedBase.png";
+import logo from "../../src/imgs/logo.png";
 import { Link } from "react-router-dom";
 // if (window?.location.pathname === '/')
 //     require('../styless.css')

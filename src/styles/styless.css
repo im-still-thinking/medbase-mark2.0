@@ -17,12 +17,57 @@
     align-items: center;
 }
 
+.navbar3{
+    width: auto;
+    height: 80px;
+    background-color: rgba(0, 48, 52, 0.6);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table{
+    margin-bottom: 0px;
+}
+
+.tableBox_b{
+    height: 100px;
+    border-radius: "0px 0px 15px 15px";
+    background: "#f8f9fa";
+    background: #ffff;
+    padding-bottom: 30px;
+}
+
+.MedNav_text{
+    color: white;
+    font-size: 1.2em;
+}
+
+.button_color{
+    background-color: #153b31;
+}
+
+.nav_cont{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .navbarp{
     width: 80px;
     position: relative;
     bottom: 7px;
     margin-top: 45px;
     margin-bottom: 30px;
+}
+.navbarp_dash{
+    width: 60px;
+    position: relative;
+    bottom: 7px;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .land_bg{
