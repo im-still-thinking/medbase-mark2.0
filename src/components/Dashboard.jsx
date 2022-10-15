@@ -10,8 +10,8 @@ export default function Dashboard() {
   const [userCID, setuserCID] = useState([]);
   const [userPhoneNumber, setuserPhoneNumber] = useState("");
   const [userUID, setuserUID] = useState("");
-  // const [emptyDB, setemptyDB] = useState(false);
-  const x = false;
+  const [emptyDB, setemptyDB] = useState(false);
+  // const x = false;
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
@@ -38,13 +38,13 @@ export default function Dashboard() {
     setuserPhoneNumber(ph);
     setuserUID(uid);
     setuserName(docSnap.get("name"));
-    setuserCID(docSnap.get("cid"));
-    console.log(userCID);
-    // if(userCID.length === 0){
-    //   setemptyDB(true);
-    // }
-  
-  }
+    var CID = docSnap.get("cid");
+    setuserCID(CID);
+
+    if(CID.length === 0){
+      setemptyDB(true);
+    }
+  };
 
   const deploy = async (e) => {
     // Get a bearer token
@@ -70,7 +70,7 @@ export default function Dashboard() {
         hash: output.data.Hash,
       }),
     })
-
+    setemptyDB(false);
     console.log("Title" + String(userCID[userCID.length - 1].id + 1));
     console.log(userPhoneNumber);
     console.log(today);
@@ -141,13 +141,13 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {x === true ? (
+              {emptyDB === true ? (
                 <>
                 <div>
                   No data available
                 </div>
                 </>
-              ) : 
+              ) : (
               <>
               {userCID.map((data) => {
                 return (
@@ -197,7 +197,9 @@ export default function Dashboard() {
                   </tr>
                 );
               })}
-              </>}
+              </>
+              )
+            }
             </tbody>
           </table>
           <div className="tableBox_b">

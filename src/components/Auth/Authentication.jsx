@@ -52,6 +52,7 @@ export default function Authentication() {
             })
             .catch((error) => {
               console.log(error);
+              navigate('/error');
             });
         } else {
           console.log("No such document!");
@@ -80,7 +81,7 @@ export default function Authentication() {
           console.log(user);
           navigate('/dashboard');
         })
-        .catch((error) => { });
+        .catch((error) => {navigate('/error')});
     }
   };
 

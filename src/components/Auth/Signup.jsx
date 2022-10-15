@@ -47,6 +47,7 @@ export default function SignUp() {
       })
       .catch((error) => {
         console.log(error);
+        navigate('/error');
       });
 
     createData();
@@ -67,7 +68,7 @@ export default function SignUp() {
           console.log(user);
           navigate('/dashboard');
         })
-        .catch((error) => {});
+        .catch((error) => {navigate('/error')});
     }
   };
 
