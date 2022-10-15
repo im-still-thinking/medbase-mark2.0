@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [userPhoneNumber, setuserPhoneNumber] = useState("");
   const [userUID, setuserUID] = useState("");
   // const [emptyDB, setemptyDB] = useState(false);
-  const x = true;
+  const x = false;
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
