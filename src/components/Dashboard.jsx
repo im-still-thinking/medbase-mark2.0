@@ -39,9 +39,9 @@ export default function Dashboard() {
     setuserName(docSnap.get("name"));
     setuserCID(docSnap.get("cid"));
     console.log(userCID);
-    if(userCID.length === 0){
-      setemptyDB(true);
-    }
+    // if(userCID.length === 0){
+    //   setemptyDB(true);
+    // }
   
   }
 
