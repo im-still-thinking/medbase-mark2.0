@@ -10,7 +10,8 @@ export default function Dashboard() {
   const [userCID, setuserCID] = useState([]);
   const [userPhoneNumber, setuserPhoneNumber] = useState("");
   const [userUID, setuserUID] = useState("");
-  const [emptyDB, setemptyDB] = useState(false);
+  // const [emptyDB, setemptyDB] = useState(false);
+  const x = true;
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
@@ -140,7 +141,7 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {emptyDB === true ? (
+              {x === true ? (
                 <>
                 <div>
                   No data available
