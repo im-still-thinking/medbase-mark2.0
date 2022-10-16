@@ -143,9 +143,9 @@ export default function Dashboard() {
             <tbody>
               {emptyDB === true ? (
                 <>
-                <div>
+                <th colspan="4" className="no_data">
                   No data available
-                </div>
+                </th>
                 </>
               ) : (
               <>
