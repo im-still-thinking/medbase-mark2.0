@@ -143,6 +143,7 @@ section {
   margin-top: -80px;
 }
 
+
 @media only screen and (max-width: 600px) {
   .logo_medbase_login{
     width: 90%;
@@ -157,9 +158,16 @@ section {
 .no_data{
   background-color: rgb(248, 249, 250);
   text-align: center;
-  padding: 20px;
-  border-radius: 0px 0px 20px 20px;
   color: grey;
   font-size: 25px;
   font-weight: 500;
+  padding-top: 20px;
+}
+
+
+.tableBox_b {
+  background-color: rgb(248, 249, 250);
+  border-radius: 0px 0px 20px 20px;
+  height: 0px;
+  padding-bottom: 20px;
 }
