@@ -150,6 +150,12 @@ section {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .but-space{
+    margin-top: 5px;
+  }
+}
+
 .padding-fix{
   padding-top: 20px;
   padding-bottom: 120px;
@@ -163,7 +169,6 @@ section {
   font-weight: 500;
   padding-top: 20px;
 }
-
 
 .tableBox_b {
   background-color: rgb(248, 249, 250);

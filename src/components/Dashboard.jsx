@@ -188,7 +188,7 @@ export default function Dashboard() {
                       >
                         <button
                           type="button"
-                          className="btn mx-lg-4 mx-md-2 btn-success btn-sm"
+                          className="btn mx-lg-4 mx-md-2 btn-success btn-sm but-space"
                         >
                           Download
                         </button>
