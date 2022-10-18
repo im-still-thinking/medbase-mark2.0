@@ -39,7 +39,7 @@ export default function Landing() {
             <b className="any1">ANYWHERE!</b>
           </h3>
           <Link to="/auth">
-            <button className="button">Join Us</button>
+            <button className="button">Try Now</button>
           </Link>
         </div>
       </div>

@@ -144,7 +144,7 @@ export default function Dashboard() {
               {emptyDB === true ? (
                 <>
                 <th colspan="4" className="no_data">
-                  No data available
+                  Looks like you haven't uploaded any data yet!
                 </th>
                 </>
               ) : (
