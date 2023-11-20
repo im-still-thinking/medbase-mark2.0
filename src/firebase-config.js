@@ -3,19 +3,18 @@ import {getAuth} from 'firebase/auth'
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBVKudViZfBj08ZfCVjj6nbgbM3pqlZjKU",
-    authDomain: "medbase-ii.firebaseapp.com",
-    projectId: "medbase-ii",
-    storageBucket: "medbase-ii.appspot.com",
-    messagingSenderId: "185301900811",
-    appId: "1:185301900811:web:d9724c5d2575ce5e3f310e",
-    measurementId: "G-B55L446C4E"
-  };
+  apiKey: "AIzaSyCbQPZHKpD_1SqyxyH-vXkFewH2Dp4xiMA",
+  authDomain: "medbaserevamp.firebaseapp.com",
+  projectId: "medbaserevamp",
+  storageBucket: "medbaserevamp.appspot.com",
+  messagingSenderId: "979990689981",
+  appId: "1:979990689981:web:761c43f384acd713fd9fd4",
+  measurementId: "G-VRMVQ12XXQ"
+};
+
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 export const db = getFirestore(app);
 
 export default auth;

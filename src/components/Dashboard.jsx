@@ -53,7 +53,7 @@ export default function Dashboard() {
     const fileName = e.target.value.substring(12, e.target.value.length - 4);
     const fileType = e.target.value.substring(e.target.value.length - 4, e.target.value.length);
 
-    const output = await lighthouse.deploy(e, `f3e100fa-1b53-4a54-8872-effed3ef543c`);
+    const output = await lighthouse.deploy(e, `b2479f07.dcda617d3e7c4474b54174be1d173e36`);
     writeToDoc(output, fileName, fileType);
       
   };

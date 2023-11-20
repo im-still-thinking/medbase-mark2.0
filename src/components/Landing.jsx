@@ -113,12 +113,12 @@ export default function Landing() {
         </div>
         <div className="aritra">
           <div className="border">
-            <img src={aritra} alt="" />
+            <img src={sayak} alt="" />
           </div>
-          <h4>Aritra Roy</h4>
-          <h5 className="h5">Backend Developer</h5>
+          <h4>Sayak Sarkar</h4>
+          <h5 className="h5">Frontend Developer</h5>
         </div>
-        <div className="risav">
+        {/* <div className="risav">
           <div className="border">
             <img src={risav} alt="Risav" />
           </div>
@@ -131,7 +131,7 @@ export default function Landing() {
           </div>
           <h4>Sayak Sarkar</h4>
           <h5 className="h5">Frontend Developer</h5>
-        </div>
+        </div> */}
       </div>
       <div className="teams_phone">
         <h2 className="H2center">
@@ -146,12 +146,12 @@ export default function Landing() {
         </div>
         <div className="card_about">
           <div className="border">
-            <img src={aritra} alt="" />
+            <img src={sayak} alt="" />
           </div>
-          <h4>Aritra Roy</h4>
-          <h5 className="h5">Backend Developer</h5>
+          <h4>Sayak Sarkar</h4>
+          <h5 className="h5">Frontend Developer</h5>
         </div>
-        <div className="card_about">
+        {/* <div className="card_about">
           <div className="border">
             <img src={risav} alt="Risav" />
           </div>
@@ -164,7 +164,7 @@ export default function Landing() {
           </div>
           <h4>Sayak Sarkar</h4>
           <h5 className="h5">Frontend Developer</h5>
-        </div>
+        </div> */}
       </div>
       <div className="bottom_land">
         <h5 className="h5">©Zephyrus</h5>
