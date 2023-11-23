@@ -97,7 +97,7 @@ export default function Landing() {
         </div>
         
       </div>
-      <div className="teams">
+      {/* <div className="teams">
         <h2 className="h2 center">
           <center>Our Team</center>
         </h2>
@@ -118,22 +118,8 @@ export default function Landing() {
           <h4>Sayak Sarkar</h4>
           <h5 className="h5">Frontend Developer</h5>
         </div>
-        {/* <div className="risav">
-          <div className="border">
-            <img src={risav} alt="Risav" />
-          </div>
-          <h4>Risavdeb Patra</h4>
-          <h5 className="h5">Frontend Developer</h5>
-        </div>
-        <div className="sayak">
-          <div className="border">
-            <img src={sayak} alt="Sayak" />
-          </div>
-          <h4>Sayak Sarkar</h4>
-          <h5 className="h5">Frontend Developer</h5>
-        </div> */}
-      </div>
-      <div className="teams_phone">
+      </div> */}
+      {/* <div className="teams_phone">
         <h2 className="H2center">
           Our Team
         </h2>
@@ -151,23 +137,10 @@ export default function Landing() {
           <h4>Sayak Sarkar</h4>
           <h5 className="h5">Frontend Developer</h5>
         </div>
-        {/* <div className="card_about">
-          <div className="border">
-            <img src={risav} alt="Risav" />
-          </div>
-          <h4>Risavdeb Patra</h4>
-          <h5 className="h5">Frontend Developer</h5>
-        </div>
-        <div className="card_about">
-          <div className="border">
-            <img src={sayak} alt="Sayak" />
-          </div>
-          <h4>Sayak Sarkar</h4>
-          <h5 className="h5">Frontend Developer</h5>
-        </div> */}
-      </div>
+        
+      </div> */}
       <div className="bottom_land">
-        <h5 className="h5">©Zephyrus</h5>
+        <h5 className="h5">©SWEProject</h5>
       </div>
     </div>
   );
