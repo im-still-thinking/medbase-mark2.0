@@ -215,10 +215,9 @@ export default function Dashboard() {
             overflow: 'hidden'
           }}>
             <iframe 
-              src={"https://medbase-mark30-fbarfc9nhpq4ikep7zhsbj.streamlit.app/"}
+              src={"https://medbase-mark30-fbarfc9nhpq4ikep7zhsbj.streamlit.app?embed=true"}
               width="100%"
               height="100%"
-              frameBorder="0"
               allowFullScreen
               title="Medical AI Assistant"
             />
