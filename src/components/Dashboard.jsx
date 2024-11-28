@@ -204,6 +204,26 @@ export default function Dashboard() {
           <div className="tableBox_b">
           </div>
         </div> 
+
+        <div className="bot-interaction-section mt-4">
+          <h2 className="text-center mb-3">AI Medical Assistant</h2>
+          <div className="streamlit-app-container" style={{
+            width: '100%', 
+            height: '600px', 
+            border: '1px solid #ddd', 
+            borderRadius: '8px', 
+            overflow: 'hidden'
+          }}>
+            <iframe 
+              src={"https://medbase-mark30-fbarfc9nhpq4ikep7zhsbj.streamlit.app/"}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allowFullScreen
+              title="Medical AI Assistant"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
