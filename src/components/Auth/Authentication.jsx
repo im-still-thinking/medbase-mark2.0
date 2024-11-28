@@ -36,11 +36,11 @@ export default function Authentication() {
     console.log(phoneNumber);
 
     if (phoneNumber.length >= 12) {
-
+      console.log("inn")
       async function checkDatabase() {
         const docRef = doc(db, "users", phoneNumber);
         const docSnap = await getDoc(docRef);
-
+        console.log("hi")
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
           setExpandForm(true);

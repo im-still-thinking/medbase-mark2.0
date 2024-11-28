@@ -1,8 +1,8 @@
 import React from "react";
-import sayak from "../../src/imgs/sayak.png";
-import risav from "../../src/imgs/risav.png";
-import raihan from "../../src/imgs/raihan.png";
-import aritra from "../../src/imgs/aritra.png";
+// import sayak from "../../src/imgs/sayak.png";
+// import risav from "../../src/imgs/risav.png";
+// import raihan from "../../src/imgs/raihan.png";
+// import aritra from "../../src/imgs/aritra.png";
 import one from "../../src/imgs/1.png";
 import three from "../../src/imgs/3.png";
 import thirteen from "../../src/imgs/13.png";
