@@ -2,22 +2,22 @@ import lighthouse from "@lighthouse-web3/sdk";
 import { onAuthStateChanged } from "firebase/auth";
 import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import auth, { db } from "../firebase-config";
+import auth, {db } from "../firebase-config"; // Corrected import of `auth`
 import NavBar from "./MedNav.jsx";
 
 export default function Dashboard() {
-  const [userName, setuserName] = useState("");
-  const [userCID, setuserCID] = useState([]);
-  const [userPhoneNumber, setuserPhoneNumber] = useState("");
-  const [userUID, setuserUID] = useState("");
-  const [emptyDB, setemptyDB] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userCID, setUserCID] = useState([]);
+  const [userPhoneNumber, setUserPhoneNumber] = useState("");
+  const [userUID, setUserUID] = useState("");
+  const [emptyDB, setEmptyDB] = useState(false);
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
-  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  var mm = String(today.getMonth() + 1).padStart(2, "0"); // January is 0!
   var yyyy = today.getFullYear();
 
-  today = mm + "/" + dd + "/" + yyyy;
+  today = `${mm}/${dd}/${yyyy}`; // Modern string interpolation
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -34,52 +34,43 @@ export default function Dashboard() {
     const docRef = doc(db, "users", ph);
     const docSnap = await getDoc(docRef);
 
-    setuserPhoneNumber(ph);
-    setuserUID(uid);
-    setuserName(docSnap.get("name"));
-    var CID = docSnap.get("cid");
-    setuserCID(CID);
+    if (docSnap.exists()) {
+      setUserPhoneNumber(ph);
+      setUserUID(uid);
+      setUserName(docSnap.get("name"));
+      const CID = docSnap.get("cid") || [];
+      setUserCID(CID);
 
-    if(CID.length === 0){
-      setemptyDB(true);
+      setEmptyDB(CID.length === 0);
+    } else {
+      console.error("No such document!");
     }
-  };
+  }
 
   const deploy = async (e) => {
-    // Get a bearer token
-    // Push file to lighthouse node
-    console.log(e.target.value.substring(12, e.target.value.length - 4));
     const fileName = e.target.value.substring(12, e.target.value.length - 4);
-    const fileType = e.target.value.substring(e.target.value.length - 4, e.target.value.length);
+    const fileType = e.target.value.substring(e.target.value.length - 4);
 
     const output = await lighthouse.deploy(e, `b2479f07.dcda617d3e7c4474b54174be1d173e36`);
     writeToDoc(output, fileName, fileType);
-      
   };
 
   async function writeToDoc(output, fileName, fileType) {
-    console.log(typeof(output));
-    console.log(output.data.Hash);
     await updateDoc(doc(db, "users", userPhoneNumber), {
       cid: arrayUnion({
         id: userCID.length + 1,
-        title: fileName + String(userCID.length + 1),
+        title: `${fileName}${userCID.length + 1}`,
         date: today,
         type: fileType,
         hash: output.data.Hash,
       }),
-    })
-    setemptyDB(false);
-    console.log("Title" + String(userCID[userCID.length - 1].id + 1));
-    console.log(userPhoneNumber);
-    console.log(today);
-
-    console.log("File Status:", output);
+    });
+    setEmptyDB(false);
   }
 
   return (
     <section>
-      {<NavBar />}
+      <NavBar />
       <div className="container">
         <h1 className="heading_dashboard fw-bold mt-5 text-center">
           Dashboard
@@ -118,7 +109,12 @@ export default function Dashboard() {
                   <h6 className="text-center fw-bold">Upload Documents</h6>
                   <div className="d-flex bd-highlight mx-4">
                     <div className="App">
-                      <input onChange={(e) => deploy(e)} type="file" id="myfile" name="myfile"/>
+                      <input
+                        onChange={(e) => deploy(e)}
+                        type="file"
+                        id="myfile"
+                        name="myfile"
+                      />
                     </div>
                   </div>
                   <h6 className="text-center">. . .</h6>
@@ -140,25 +136,20 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {emptyDB === true ? (
-                <>
-                <th colspan="4" className="no_data">
-                  Looks like you haven't uploaded any data yet!
-                </th>
-                </>
+              {emptyDB ? (
+                <tr>
+                  <th colSpan="4" className="no_data">
+                    Looks like you haven't uploaded any data yet!
+                  </th>
+                </tr>
               ) : (
-              <>
-              {userCID.map((data) => {
-                return (
-                  <tr>
+                userCID.map((data) => (
+                  <tr key={data.id}>
                     <th scope="row" style={{ textAlign: "center" }}>
                       {data.id}
                     </th>
                     <td style={{ textAlign: "center" }}>{data.title}</td>
-                    <td
-                      className="small text-muted"
-                      style={{ textAlign: "center" }}
-                    >
+                    <td className="small text-muted" style={{ textAlign: "center" }}>
                       {data.date}
                     </td>
                     <td style={{ textAlign: "right" }}>
@@ -194,28 +185,34 @@ export default function Dashboard() {
                       </a>
                     </td>
                   </tr>
-                );
-              })}
-              </>
-              )
-            }
+                ))
+              )}
             </tbody>
           </table>
-          <div className="tableBox_b">
-          </div>
-        </div> 
+        </div>
 
-        <div className="bot-interaction-section mt-4">
+        <div
+          className="bot-interaction-section mt-4 p-4"
+          style={{
+            background: "#f8f9fa",
+            borderRadius: "8px",
+          }}
+        >
           <h2 className="text-center mb-3">AI Medical Assistant</h2>
-          <div className="streamlit-app-container" style={{
-            width: '100%', 
-            height: '600px', 
-            border: '1px solid #ddd', 
-            borderRadius: '8px', 
-            overflow: 'hidden'
-          }}>
-            <iframe 
-              src={"https://medbase-mark30-fbarfc9nhpq4ikep7zhsbj.streamlit.app?embed=true"}
+          <div
+            className="streamlit-app-container"
+            style={{
+              width: "100%",
+              height: "600px",
+              border: "1px solid #ddd",
+              borderRadius: "8px",
+              overflow: "hidden",
+            }}
+          >
+            <iframe
+              src={
+                "https://medbase-mark30-fbarfc9nhpq4ikep7zhsbj.streamlit.app?embed=true"
+              }
               width="100%"
               height="100%"
               allowFullScreen
